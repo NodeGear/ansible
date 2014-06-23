@@ -1,0 +1,42 @@
+---
+
+- name: Update Gitolite rc
+  copy: src=gitolite.rc dest=/home/git/.gitolite.rc backup=yes
+  sudo: yes
+  sudo_user: git
+
+- name: Update ng-git
+  git: accept_hostkey=yes dest=/root/ng-git repo=ssh://git@beta.castawaylabs.com/nodegear/ng-git.git
+
+- name: Update credentials
+  template: src=credentials.json dest=/root/ng-git/lib/credentials.json
+
+- name: Install dependencies
+  shell: cd /root/ng-git/; npm install;
+
+- name: Make local directory
+  shell: mkdir -p /home/git/local/hooks/repo-specific
+  sudo: yes
+  sudo_user: git
+
+- name: Update gitolite script
+  shell: cp /root/ng-git/lib/scripts/nodegear /home/git/local/hooks/repo-specific/nodegear
+
+- name: Update gitolite credentials
+  template: src=git_credentials.json dest=/home/git/ng_credentials.json
+  sudo: yes
+  sudo_user: git
+
+- name: Set ownership
+  shell: chown git:git /home/git/local/hooks/repo-specific/nodegear
+
+- name: Set permissions
+  shell: chmod +x /home/git/local/hooks/repo-specific/nodegear
+
+- name: Install nodegear dependencies
+  shell: npm install redis hiredis
+  sudo: yes
+  sudo_user: git
+
+- name: Copy gitolite-admin
+  git: accept_hostkey=yes repo=ssh://git@sp1.castawaylabs.com/gitolite-admin.git dest=/root/gitolite

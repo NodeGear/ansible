@@ -1,0 +1,4 @@
+---
+
+- name: Install Dependencies
+  apt: name="g++,gcc,make,autoconf,git,monit" state=present

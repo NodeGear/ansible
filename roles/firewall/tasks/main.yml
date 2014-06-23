@@ -1,0 +1,13 @@
+---
+
+- name: Firewall in Rejection
+  ufw: state=enabled policy=reject
+
+- name: Firewall Open ssh
+  ufw: rule=allow name=OpenSSH
+
+- name: Firewall HTTP
+  ufw: rule=allow port=80 proto=tcp
+
+- name: Firewall HTTPs
+  ufw: rule=allow port=443 proto=tcp

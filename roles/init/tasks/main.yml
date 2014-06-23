@@ -1,0 +1,25 @@
+---
+
+- name: Install backend init.d script
+  copy: src=backend.sh dest=/etc/init.d/nodegear_backend
+
+- name: Make it executable
+  shell: chmod +x /etc/init.d/nodegear_backend
+
+- name: Install git init.d script
+  copy: src=git.sh dest=/etc/init.d/nodegear_git
+
+- name: Make it executable
+  shell: chmod +x /etc/init.d/nodegear_git
+
+- name: Install monitrc
+  copy: src=monitrc dest=/etc/monit/monitrc backup=yes
+
+- name: Install monit backend config
+  copy: src=backend_monit dest=/etc/monit/conf.d/nodegear_backend
+
+- name: Install monit git config
+  copy: src=git_monit dest=/etc/monit/conf.d/nodegear_git
+
+- name: Reload monit
+  shell: monit reload

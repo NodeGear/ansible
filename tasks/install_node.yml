@@ -1,0 +1,13 @@
+---
+
+- name: Install Dependencies
+  include: ../roles/backend/tasks/dependencies.yml
+
+- name: Download node
+  shell: "curl -L http://nodejs.org/dist/latest/node-v0.10.29.tar.gz | tar xzf -"
+
+- name: Configure and Install Node
+  shell: "cd node-v0.10.29/ && ./configure && make && make install"
+
+- name: Delete Files
+  shell: rm -rf node-v0.10.29*

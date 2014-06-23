@@ -1,0 +1,12 @@
+---
+
+- name: Install Firewall
+  hosts: nodegear_services
+  user: root
+  vars:
+    redis_ip: 198.27.127.39
+    redis_port: 6379
+    mongo_ip: 198.27.127.39
+    backend_ip: 198.27.70.69
+  tasks:
+    - include: tasks/services.yml

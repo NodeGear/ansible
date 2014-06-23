@@ -1,0 +1,28 @@
+---
+
+- name: Install Dependencies
+  include: dependencies.yml
+
+- name: Check Node
+  command: /usr/local/bin/node --version
+  register: node_installed
+  ignore_errors: True
+
+- name: Install node
+  include: ../../../tasks/install_node.yml
+  when: node_installed|failed
+
+- name: Update ng-backend
+  git: accept_hostkey=yes dest=/root/ng-backend repo=ssh://git@beta.castawaylabs.com/nodegear/ng-backend.git
+
+- name: Install dependencies
+  shell: cd /root/ng-backend/; npm install;
+
+- name: Update credentials
+  template: src=credentials.json dest=/root/ng-backend/lib/credentials.json
+
+- name: Update ng-scripts
+  shell: cp -r /root/ng-backend/lib/scripts /ng-scripts
+
+- name: Fix permissions
+  shell: chmod -R +x /ng-scripts

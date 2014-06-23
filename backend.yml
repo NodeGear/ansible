@@ -1,0 +1,15 @@
+---
+
+- name: Install Backend
+  hosts: nodegear_backend
+  user: root
+  vars:
+    redis_ip: 198.27.127.39
+    redis_port: 6379
+    mongo_ip: 198.27.127.39
+    backend_ip: 198.27.70.69
+  roles:
+    - backend
+    - git
+    - init
+    - firewall
