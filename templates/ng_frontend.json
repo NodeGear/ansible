@@ -1,0 +1,47 @@
+{
+	"redis_port": 6379,
+	"redis_host": "redis",
+	"redis_key": "ahShii3ahyoo0OhJa1ooG4yoosee8me9EvahW0ae",
+	"newrelic_key": "b2013e8b7f782b75c7fc461ded692a98b9e35fb6",
+	"bugsnag_key": "c0c7568710bb46d4bf14b3dad719dbbe",
+	"stripe": {
+		"pub": "pk_live_6A55gdgfdILQbxvBjCdINAz0",
+		"secret": "sk_live_CsnuCvACNXEd0x6zFU1dXNDS"
+	},
+	"smtp": {
+		"user": "matej@matej.me",
+		"pass": "eELIT9FIJIU52NaWvrMrPg"
+	},
+	"db": "mongodb://nodegear:ahShii3ahyoo0OhJa1ooG4yoosee8me9EvahW0ae@mongo/nodegear",
+	"networkDb": "mongodb://nodegear:ahShii3ahyoo0OhJa1ooG4yoosee8me9EvahW0ae@mongo/networkAnalyser",
+	"db_options": {
+		"auto_reconnect": true,
+		"native_parser": true,
+		"server": {
+			"auto_reconnect": true
+		}
+	},
+	"networkDb_options": {
+		"auto_reconnect": true,
+		"native_parser": true,
+		"server": {
+			"auto_reconnect": true
+		}
+	},
+	"port": 3000,
+	"gitolite": "/somewhere",
+	"cdn": {
+		"enabled": false,
+		"url": "//localhost:3000"
+	},
+	"admin_mysql": {
+		"host": "mysql",
+		"user": "root",
+		"password": "pahs4eeQuaicaw7isuti"
+	},
+	"admin_mongodb": {
+		"host": "client_mongo",
+		"user": "matej",
+		"pass": "aKahphei7tooQuee9jomoh7Eet3ahthei1eemaeh"
+	}
+}

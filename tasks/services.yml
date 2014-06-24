@@ -1,13 +1,13 @@
 ---
 
-- name: NG Redis
-  ufw: rule=allow direction=in proto=any src="{{ backend_ip }}" port="{{ redis_port }}" dest="{{ redis_ip }}"
-
-- name: NG Mongodb
-  ufw: rule=allow direction=in proto=any src="{{ backend_ip }}" port=27017 dest="{{ mongo_ip }}"
+###
+# ng_mysql
 
 - name: Run Nodegear MySQL
   docker: image="tutum/mysql" ports="198.27.127.39:3306:3306" volumes="/home/ng_mysql:/var/lib/mysql" name="ng_mysql_db" state=running
+
+###
+# ng_redis
 
 - name: Download Redis Docker
   git: repo=git://github.com/CastawayLabs/redis-docker.git dest=/tmp/redis-docker
@@ -18,6 +18,9 @@
 - name: Run NodeGear Redis
   docker: image="castawaylabs/redis-docker" ports="198.27.127.39:6379:6379" name="ng_redis" volumes="/home/ng_redis:/var/lib/redis" state=running
 
+###
+# ng_mongodb
+
 - name: Download Mongodb Docker
   git: repo=git://github.com/CastawayLabs/mongodb-docker.git dest=/tmp/mongodb-docker
 
@@ -26,3 +29,21 @@
 
 - name: Run NodeGear Mongodb
   docker: image="castawaylabs/mongodb-docker" volumes="/home/ng_mongodb:/var/lib/mongodb" ports="198.27.127.39:27017:27017" name="ng_mongodb" state=running
+
+###
+# NG-Frontend
+
+- name: Download node docker
+  git: repo=git://github.com/CastawayLabs/node-docker.git dest=/tmp/node-docker
+
+- name: Build node docker
+  docker_image: path="/tmp/node-docker" name="castawaylabs/node-docker" state=present
+
+- name: Update NG-Frontend
+  git: repo=ssh://git@beta.castawaylabs.com/nodegear/ng-frontend.git dest=/home/ng-frontend key_file=/root/ng_keys/id_rsa
+
+- name: Install credentials
+  template: src=ng_frontend.json dest=/home/ng-frontend/credentials.json
+
+- name: Run NG-Frontend
+  docker: image="castawaylabs/node-docker" volumes="/home/ng-frontend:/srv/app,/root/ng_keys/id_rsa:/root/.ssh/id_rsa,/root/ng_keys/id_rsa.pub:/root/.ssh/id_rsa.pub" ports="127.0.0.1:9117:80" links="ng_mongodb:mongo,ng_redis:redis" name="ng_frontend" env="PORT=80,NODE_ENV=production" state=running

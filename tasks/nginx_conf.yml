@@ -1,0 +1,8 @@
+- name: install template
+  template: src=nginx_ssl.conf.j2 dest="/etc/nginx/conf.d/{{ shortname }}.conf"
+
+- name: Test nginx Configuration
+  command: nginx -t
+
+- name: Reload nginx service
+  service: name=nginx state=reloaded

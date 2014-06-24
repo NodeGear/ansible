@@ -1,0 +1,10 @@
+---
+
+###
+# UFW stuff
+
+- name: NG Redis
+  ufw: rule=allow direction=in proto=any src="{{ backend_ip }}" port="{{ redis_port }}" dest="{{ redis_ip }}"
+
+- name: NG Mongodb
+  ufw: rule=allow direction=in proto=any src="{{ backend_ip }}" port=27017 dest="{{ mongo_ip }}"
