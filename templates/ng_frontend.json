@@ -1,7 +1,7 @@
 {
 	"redis_port": 6379,
 	"redis_host": "redis",
-	"redis_key": "ahShii3ahyoo0OhJa1ooG4yoosee8me9EvahW0ae",
+	"redis_key": "aejah0ahwaes9gephai0aephooChaasee1ieh0ThegaiSh5feiChaRohree5xi0hoow7Uu0pexiuKelahgaeMuedoimohfeechaeQuoh7jai4bahthaeph8wohzohH8katep4ep6uomeig0baeseduhais2Thaen3ooP7ain1ohd3geiG6Osoh1Olahqu1quahleimah9ohs4cuak7ahqu0aiyekiT4ienge0aor0ahquoongi3Oothah3",
 	"newrelic_key": "b2013e8b7f782b75c7fc461ded692a98b9e35fb6",
 	"bugsnag_key": "c0c7568710bb46d4bf14b3dad719dbbe",
 	"stripe": {
@@ -32,16 +32,16 @@
 	"gitolite": "/somewhere",
 	"cdn": {
 		"enabled": false,
-		"url": "//localhost:3000"
+		"url": ""
 	},
 	"admin_mysql": {
-		"host": "mysql",
-		"user": "root",
-		"password": "pahs4eeQuaicaw7isuti"
+		"host": "198.27.127.39",
+		"user": "admin",
+		"password": "egaem9uhaebaesh0ahjangeepee6CheeX4feeYea"
 	},
 	"admin_mongodb": {
-		"host": "client_mongo",
-		"user": "matej",
-		"pass": "aKahphei7tooQuee9jomoh7Eet3ahthei1eemaeh"
+		"host": "198.27.127.38",
+		"user": "admin",
+		"pass": "zuch4noh0Hahcim4oochuquae1heiKo7eun4gaz7WiikeixeiR8ohn5xu6xei9CohZee9OomoThooqu3oode3ge7adeizosai9caipoodaira0hutoo7wah5oodur7ahPh2caiyeepayietah4Sae2ree5hiyoh4tie1ieDietheiliweivohfiy2ohoo5Eingahqu2iesei9yaurat9AjiuN8Poh4eidacaeZ3aizu1eiquazoh1naipo"
 	}
 }

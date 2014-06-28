@@ -30,6 +30,9 @@
 - name: Run NodeGear Mongodb
   docker: image="castawaylabs/mongodb-docker" volumes="/home/ng_mongodb:/var/lib/mongodb" ports="198.27.127.39:27017:27017" name="ng_mongodb" state=running
 
+- name: Run Nodegear Client mongodb
+  docker: image="castawaylabs/mongodb-docker" volumes="/home/ng_client_mongodb:/var/lib/mongodb" name="ng_client_mongodb" ports="198.27.127.38:27017:27017" state=running
+
 ###
 # NG-Frontend
 

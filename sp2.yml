@@ -8,6 +8,8 @@
     redis_port: 6379
     mongo_ip: 198.27.127.39
     backend_ip: 198.27.70.69
+    client_mysql_ip: 198.27.127.39
+    client_mongo_ip: 198.27.127.38
   tasks:
     - include: tasks/firewall.yml
     - { include: tasks/nginx_conf.yml, shortname: "ng_frontend", domains: "nodegear.io www.nodegear.io", nginx_ip: 198.27.127.39, port: 9117 }

@@ -3,8 +3,17 @@
 ###
 # UFW stuff
 
+- name: Enable UFW
+  ufw: state=enabled
+
 - name: NG Redis
   ufw: rule=allow direction=in proto=any src="{{ backend_ip }}" port="{{ redis_port }}" dest="{{ redis_ip }}"
 
-- name: NG Mongodb
+- name: NG MongoDB
   ufw: rule=allow direction=in proto=any src="{{ backend_ip }}" port=27017 dest="{{ mongo_ip }}"
+
+- name: NG Client MongoDB
+  ufw: rule=allow direction=in proto=any src="{{ backend_ip }}" port=27017 dest="{{ client_mongo_ip }}"
+
+- name: NG Client MySQL
+  ufw: rule=allow direction=in proto=any src="{{ backend_ip }}" port=3306 dest="{{ client_mysql_ip }}"
